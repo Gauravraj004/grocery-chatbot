@@ -48,9 +48,6 @@ Create a `.env` file at the project root with your Gemini API key (get one at ht
 
 ```
 GOOGLE_API_KEY=your_gemini_api_key_here
-
-# or
-GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 Tip: An `.env.example` is included for reference.
