@@ -24,8 +24,8 @@ echo Starting React Frontend...
 cd frontend
 REM Ensure dependencies are installed
 if not exist "node_modules" (
-    echo Installing frontend dependencies...
-    npm install
+    echo Installing frontend dependencies with npm ci...
+    npm ci
 )
 start /b npm run dev
 cd ..

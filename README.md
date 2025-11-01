@@ -67,11 +67,11 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-3) Install frontend dependencies
+3) Install frontend dependencies (use npm ci for a clean, lockfile-resolved install)
 
 ```powershell
 cd frontend
-npm install
+npm ci
 cd ..
 ```
 
@@ -198,7 +198,7 @@ Pinned in `requirements.txt`:
 
 - flask==3.0.0, flask-cors==4.0.0, python-dotenv==1.0.0
 - langchain==0.3.0, langchain-community==0.3.0, langchain-google-genai==2.0.0
-- google-generativeai>=0.8.0,<1.0.0
+- google-generativeai>=0.7.0,<0.8.0
 - pydantic>=2.4.0,<3.0.0
 
 Frontend dependencies are in `frontend/package.json` (React 18, Vite 5, Axios).
