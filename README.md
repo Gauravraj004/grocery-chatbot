@@ -30,41 +30,40 @@ User → Gemini (translate) → Pydantic ProductQuery → Python search → Resu
 
 ```mermaid
 flowchart LR
-  U[User] --> F[React Frontend (Vite)]
-  F -->|POST /api/chat| A[Flask API Server]
-  A --> C[ConversationContext (memory)]
-  A --> T[QueryTranslator (Gemini via LangChain)]
-  T -->|Pydantic ProductQuery| A
-  T --- G[(Google Gemini API)]
+  U[User] --> F[Frontend]
+  F --> A[Flask API]
+  A --> M[ConversationContext]
+  A --> T[QueryTranslator]
+  T --> A
+  T --> G[(Google Gemini API)]
   A --> S[ProductSearchEngine]
   S --> D[(JSON Data Catalogs)]
   S --> A
-  A -->|{ message, products, filters_used }| F
+  A --> F
 ```
 
 ```mermaid
 sequenceDiagram
   participant U as User
-  participant F as Frontend (React)
-  participant A as API (Flask)
+  participant F as Frontend
+  participant A as API
   participant M as Memory
-  participant T as Translator (Gemini)
+  participant T as Translator
   participant S as Search
-  participant D as Data (JSON)
+  participant D as Data
 
   U->>F: Type message
-  F->>A: POST /api/chat { message }
-  A->>M: get_context()
+  F->>A: POST /api/chat
+  A->>M: get_context
   A->>T: translate(user, context)
-  T->>T: inherit/override + fuzzy mapping
-  T-->>A: ProductQuery (lists, price, tags, keywords)
-  A->>M: update_context(ProductQuery)
+  T-->>A: ProductQuery
+  A->>M: update_context
   A->>S: search(query, limit=3)
-  S->>D: load/filter/sort
+  S->>D: read/filter/sort
   D-->>S: products
   S-->>A: results + reasons
-  A-->>F: { message, products, filters_used }
-  F-->>U: Render cards + context summary
+  A-->>F: message + products + filters
+  F-->>U: Render UI
 ```
 
 ## � Setup (.env)
