@@ -22,6 +22,11 @@ timeout /t 3 /nobreak >nul
 
 echo Starting React Frontend...
 cd frontend
+REM Ensure dependencies are installed
+if not exist "node_modules" (
+    echo Installing frontend dependencies...
+    npm install
+)
 start /b npm run dev
 cd ..
 
