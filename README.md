@@ -42,30 +42,6 @@ flowchart LR
   A --> F
 ```
 
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant F as Frontend
-  participant A as API
-  participant M as Memory
-  participant T as Translator
-  participant S as Search
-  participant D as Data
-
-  U->>F: Type message
-  F->>A: POST /api/chat
-  A->>M: get_context
-  A->>T: translate(user, context)
-  T-->>A: ProductQuery
-  A->>M: update_context
-  A->>S: search(query, limit=3)
-  S->>D: read/filter/sort
-  D-->>S: products
-  S-->>A: results + reasons
-  A-->>F: message + products + filters
-  F-->>U: Render UI
-```
-
 ## � Setup (.env)
 
 Create a `.env` file at the project root with your Gemini API key (get one at https://aistudio.google.com/app/apikey). Either variable name works:
