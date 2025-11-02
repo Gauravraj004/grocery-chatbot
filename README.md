@@ -210,11 +210,6 @@ Frontend dependencies are in `frontend/package.json` (React 18, Vite 5, Axios).
 - No products: ensure JSON files exist in `data/`.
 - Gemini quota/error: verify your key in Google AI Studio and retry.
 
-## 🧹 Code hygiene (what we removed)
-
-- Deleted CLI-oriented result formatting helpers from `product_search.py` (not used by API/React).
-- Kept the core modules minimal: only production code that serves the API/React app.
-
 ## 📄 License
 
 MIT-like for demo/assignment purposes. Use and modify as needed.
